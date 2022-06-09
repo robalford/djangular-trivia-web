@@ -26,6 +26,7 @@ export class TriviaComponent implements OnInit {
   getTrivia() {
     this.triviaService.getTrivia().subscribe({
         next: (data) => {
+          console.log(data);
           this.triviaData = data;
           this.getNextQuestion();
         },

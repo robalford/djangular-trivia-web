@@ -13,6 +13,8 @@ import { MatRadioModule } from "@angular/material/radio";
 
 import { TriviaComponent } from './trivia/trivia.component';
 import {MatButtonModule} from "@angular/material/button";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -29,6 +31,12 @@ import {MatButtonModule} from "@angular/material/button";
     MatToolbarModule,
     MatRadioModule,
     MatButtonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
